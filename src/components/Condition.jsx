@@ -10,7 +10,7 @@ export const Condition = ({ patientId }) => {
   console.log(error);
   return (
     <div>
-      <p>{patientId}</p>
+      <p>Condition {patientId}</p>
     </div>
   );
 };

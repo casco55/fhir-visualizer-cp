@@ -10,7 +10,7 @@ export const PatientInfo = ({ patientId }) => {
   console.log(error);
   return (
     <div>
-      <p>{patientId}</p>
+      <p>Patient Info {patientId}</p>
     </div>
   );
 };
