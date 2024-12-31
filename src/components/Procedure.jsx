@@ -6,8 +6,7 @@ export const Procedure = ({ patientId }) => {
     patientId,
     path: procedurePath,
   });
-  console.log(info);
-  console.log(error);
+
   return (
     <div>
       <p>Procedures for {patientId}</p>

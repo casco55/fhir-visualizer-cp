@@ -6,8 +6,7 @@ export const Condition = ({ patientId }) => {
     patientId,
     path: conditionPath,
   });
-  console.log(info);
-  console.log(error);
+
   return (
     <div>
       <p>Condition {patientId}</p>

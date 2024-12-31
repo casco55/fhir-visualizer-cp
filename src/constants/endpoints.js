@@ -4,5 +4,5 @@ export const conditionPath = "/Condition?subject=";
 export const procedurePath = "/Procedure?subject=";
 export const allergyPath = "/AllergyIntolerance?patient=";
 export const observationPath = "/Observation?subject=";
-export const medicationPath = "/Medication?subject=";
+export const medicationPath = "/MedicationStatement?subject=";
 export const acceptHeader = "application/fhir+json";

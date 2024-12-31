@@ -7,8 +7,7 @@ export const AllergyIntolerance = ({ patientId }) => {
     patientId,
     path: allergyPath,
   });
-  console.log(info);
-  console.log(error);
+
   return (
     <div>
       <p>Allergies and Intolerances for {patientId}</p>

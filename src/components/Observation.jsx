@@ -7,8 +7,7 @@ export const Observation = ({ patientId }) => {
     patientId,
     path: observationPath,
   });
-  console.log(info);
-  console.log(error);
+
   return (
     <div>
       <p>Observations for {patientId}</p>

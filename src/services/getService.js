@@ -10,7 +10,6 @@ export const getService = async (url) => {
     });
     return response.data;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };
