@@ -6,7 +6,6 @@ export const PatientInfo = ({ patientId }) => {
     patientId,
     path: patientPath,
   });
-  console.log(info);
   return (
     <div>
       <p>Patient Info {patientId}</p>

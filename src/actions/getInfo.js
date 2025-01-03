@@ -6,7 +6,8 @@ export const getInfo = async ({ id, path, setInfo, setError }) => {
     const url = `${baseUrl}${path}${id}`;
     const response = await getService(url);
     setInfo(response);
+    setError(false);
   } catch (error) {
-    setError("error al obtener la información");
+    setError(true);
   }
 };
