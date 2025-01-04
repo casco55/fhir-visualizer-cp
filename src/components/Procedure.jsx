@@ -1,27 +1,33 @@
 import { procedurePath } from "../constants/endpoints";
 import { useInfo } from "../hooks/useInfo";
-import { ErrorComponent } from "./common/ErrorComponent";
+import { AlertComponent } from "./common/AlertComponent";
 
 export const Procedure = ({ patientId }) => {
-  const { info, error } = useInfo({
+  const { info, error, total, entry, loading } = useInfo({
     patientId,
     path: procedurePath,
   });
-  const entry = info?.entry;
   return (
     <>
       {error && (
-        <ErrorComponent text="Hubo un error al cargar los procedimientos" />
+        <AlertComponent
+          text="Hubo un error al cargar los procedimientos"
+          type="danger"
+        />
       )}
-      {!error && (
+      {!error && total < 1 && (
+        <AlertComponent
+          text="No se encontraron procedimientos"
+          type="warning"
+        />
+      )}
+      {!error && entry?.length > 0 && (
         <div className="d-flex flex-column px-5 py-4">
-          {entry &&
-            entry.length > 0 &&
-            entry?.map((item, index) => (
-              <p key={index}>
-                {index + 1}: {item.resource?.code?.coding[0]?.display}
-              </p>
-            ))}
+          {entry?.map((item, index) => (
+            <p key={index}>
+              {index + 1}: {item.resource?.code?.coding[0]?.display}
+            </p>
+          ))}
         </div>
       )}
     </>

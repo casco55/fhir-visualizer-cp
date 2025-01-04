@@ -7,6 +7,8 @@ export const AllergyIntolerance = ({ patientId }) => {
     patientId,
     path: allergyPath,
   });
+  const entry = info?.entry;
+  const total = info?.total;
 
   return (
     <div>
