@@ -9,10 +9,10 @@ export const AccordionItem = ({
 }) => {
   return (
     <>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id={itemId}>
+      <div className="accordion-item">
+        <h2 className="accordion-header" id={itemId}>
           <button
-            class={`accordion-button ${accordionButtonCollapse}`}
+            className={`accordion-button ${accordionButtonCollapse}`}
             type="button"
             data-bs-toggle="collapse"
             data-bs-target={`#${itemId}Collapse`}
@@ -24,7 +24,7 @@ export const AccordionItem = ({
         </h2>
         <div
           id={`${itemId}Collapse`}
-          class={`accordion-collapse collapse ${showContain}`}
+          className={`accordion-collapse collapse ${showContain}`}
           aria-labelledby={itemId}
           data-bs-parent={`#${parentId}`}
         >
