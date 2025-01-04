@@ -11,7 +11,6 @@ export const AllergyIntolerance = ({ patientId }) => {
   return (
     <div>
       <p>Allergies and Intolerances for {patientId}</p>
-      {/* Add rendering of allergy and intolerance info here */}
     </div>
   );
 };

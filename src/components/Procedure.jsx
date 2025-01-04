@@ -22,7 +22,6 @@ export const Procedure = ({ patientId }) => {
                 {index + 1}: {item.resource?.code?.coding[0]?.display}
               </p>
             ))}
-          {/* Add rendering of procedure info here */}
         </div>
       )}
     </>

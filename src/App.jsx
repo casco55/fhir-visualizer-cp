@@ -10,7 +10,10 @@ import { AccordionItem } from "./components/common/AccordionItem";
 const App = () => {
   return (
     <>
-      <div className="accordion accordion-flush" id="healthRecordAccordion">
+      <div
+        className="accordion accordion-flush col-11 mx-auto border mt-5 rounded"
+        id="healthRecordAccordion"
+      >
         <AccordionItem
           itemId="patienInfo"
           parentId="healthRecordAccordion"
