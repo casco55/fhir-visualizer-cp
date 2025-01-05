@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { conditionPath } from "../constants/endpoints";
 import { useInfo } from "../hooks/useInfo";
 import { AlertComponent } from "./common/AlertComponent";
