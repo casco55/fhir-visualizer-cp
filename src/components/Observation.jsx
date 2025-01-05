@@ -8,7 +8,6 @@ export const Observation = ({ patientId }) => {
     patientId,
     path: observationPath,
   });
-  console.log(entry);
 
   return (
     <>
@@ -36,12 +35,12 @@ export const Observation = ({ patientId }) => {
               )}
               {item.resource?.component &&
                 item.resource?.component.map((item, index) => (
-                  <>
+                  <div key={index}>
                     <p className="my-0">
                       Componente: {item.code?.coding[0]?.display}
                     </p>
                     <p className="my-0">Valor: {item.valueQuantity?.value}</p>
-                  </>
+                  </div>
                 ))}
             </div>
           ))}
