@@ -1,6 +1,4 @@
 import "./App.css";
-import { AllergyIntolerance } from "./components/AllergyIntolerance";
-import { MedicationStatement } from "./components/MedicationStatement";
 import { PatientInfo } from "./components/PatientInfo";
 import { Procedure } from "./components/Procedure";
 import "bootstrap/dist/js/bootstrap.min.js";
@@ -9,7 +7,9 @@ import { useSearch } from "./hooks/useSearch";
 import { SearchInput } from "./components/SearchInput";
 import { InfoComponent } from "./components/common/InfoComponent";
 import {
+  allergyPath,
   conditionPath,
+  medicationPath,
   observationPath,
   procedurePath,
 } from "./constants/endpoints";
@@ -59,19 +59,19 @@ const App = () => {
             parentId="healthRecordAccordion"
             title="Procedimientos"
           >
-            <InfoComponent
-              patientId={searchText}
-              path={procedurePath}
-              errorText={"Hubo un error al cargar los procedimientos"}
-              noRecordsText={"No se encontraron procedimientos"}
-            />
+            <Procedure patientId={searchText} />
           </AccordionItem>
           <AccordionItem
             itemId="allergies"
             parentId="healthRecordAccordion"
             title="Alergias"
           >
-            <AllergyIntolerance patientId={searchText} />
+            <InfoComponent
+              patientId={searchText}
+              path={allergyPath}
+              errorText={"Hubo un error al cargar las alergias"}
+              noRecordsText={"No se encontraron alergias"}
+            />
           </AccordionItem>
           <AccordionItem
             itemId="observations"
@@ -90,7 +90,12 @@ const App = () => {
             parentId="healthRecordAccordion"
             title="Medicamentos"
           >
-            <MedicationStatement patientId={searchText} />
+            <InfoComponent
+              patientId={searchText}
+              path={medicationPath}
+              errorText={"Hubo un error al cargar los medicamentos"}
+              noRecordsText={"No se encontraron medicamentos"}
+            />
           </AccordionItem>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { patientPath } from "../constants/endpoints";
 import { useInfo } from "../hooks/useInfo";
 import { AlertComponent } from "./common/AlertComponent";
+import { LoadingComponent } from "./common/LoadingComponent";
 
 export const PatientInfo = ({ patientId }) => {
   const { info, error, total, entry, loading } = useInfo({
@@ -10,11 +11,7 @@ export const PatientInfo = ({ patientId }) => {
   /* TODO: consultar contrato de pacientes */
   return (
     <>
-      {loading && (
-        <div className="d-flex justify-content-center my-5">
-          <div className="spinner-border" role="status"></div>
-        </div>
-      )}
+      {loading && <LoadingComponent />}
       {error && !loading && (
         <AlertComponent
           text="Hubo un error al cargar las condiciones"
@@ -29,7 +26,7 @@ export const PatientInfo = ({ patientId }) => {
           {entry.map((item, index) => (
             <div className="col border p-3" key={index}>
               <p className="my-0">
-                Condición: {item.resource?.code?.coding[0]?.display}
+                Nombre: {item.resource?.code?.coding[0]?.display}
               </p>
               <p className="my-0">Fecha: {item.resource?.onsetDateTime}</p>
             </div>

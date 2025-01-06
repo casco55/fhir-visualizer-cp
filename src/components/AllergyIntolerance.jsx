@@ -2,6 +2,7 @@
 import { allergyPath } from "../constants/endpoints";
 import { useInfo } from "../hooks/useInfo";
 import { AlertComponent } from "./common/AlertComponent";
+import { LoadingComponent } from "./common/LoadingComponent";
 
 export const AllergyIntolerance = ({ patientId }) => {
   const { info, error, total, entry, loading } = useInfo({
@@ -11,6 +12,7 @@ export const AllergyIntolerance = ({ patientId }) => {
   /* TODO: consultar contrato de alergias  */
   return (
     <>
+      {loading && <LoadingComponent />}
       {error && (
         <AlertComponent
           text="Hubo un error al cargar las intolerancias"
