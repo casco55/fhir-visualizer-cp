@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useInfo } from "../../hooks/useInfo";
 import { AlertComponent } from "./AlertComponent";
 import { CardComponent } from "./CardComponent";
@@ -13,6 +14,20 @@ export const InfoComponent = ({
     patientId,
     path: path,
   });
+  useEffect(() => {
+    if (entry?.length > 0) {
+      const reduceEntryByDisplay = entry.reduce((acc, item) => {
+        const display = item.resource?.code?.coding[0]?.display;
+        if (acc[display]) {
+          acc[display].push(item);
+        } else {
+          acc[display] = [item];
+        }
+        return acc;
+      });
+      console.log(reduceEntryByDisplay);
+    }
+  }, [entry]);
 
   return (
     <>
