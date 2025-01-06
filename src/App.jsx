@@ -1,13 +1,18 @@
 import "./App.css";
 import { AllergyIntolerance } from "./components/AllergyIntolerance";
-import { Condition } from "./components/Condition";
-import { Observation } from "./components/Observation";
 import { MedicationStatement } from "./components/MedicationStatement";
 import { PatientInfo } from "./components/PatientInfo";
 import { Procedure } from "./components/Procedure";
 import "bootstrap/dist/js/bootstrap.min.js";
 import { AccordionItem } from "./components/common/AccordionItem";
 import { useSearch } from "./hooks/useSearch";
+import { SearchInput } from "./components/SearchInput";
+import { InfoComponent } from "./components/common/InfoComponent";
+import {
+  conditionPath,
+  observationPath,
+  procedurePath,
+} from "./constants/endpoints";
 const App = () => {
   const { text, handleChange, onSearch, searchText } = useSearch();
   return (
@@ -17,24 +22,11 @@ const App = () => {
           <h1>Health Record</h1>
         </div>
         <div className="mx-auto my-2">
-          <div className="input-group mb-3 col-11 mx-auto">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Buscar paciente"
-              aria-label="Buscar paciente"
-              aria-describedby="basic-addon2"
-              value={text}
-              onChange={handleChange}
-            />
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={onSearch}
-            >
-              Buscar
-            </button>
-          </div>
+          <SearchInput
+            text={text}
+            handleChange={handleChange}
+            onSearch={onSearch}
+          />
         </div>
         <div
           className="accordion accordion-flush col-11 mx-auto border mt-3 rounded"
@@ -55,14 +47,24 @@ const App = () => {
             parentId="healthRecordAccordion"
             title="Condiciones"
           >
-            <Condition patientId={searchText} />
+            <InfoComponent
+              patientId={searchText}
+              path={conditionPath}
+              errorText={"Hubo un error al cargar las condiciones"}
+              noRecordsText={"No se encontraron condiciones"}
+            />
           </AccordionItem>
           <AccordionItem
             itemId="procedures"
             parentId="healthRecordAccordion"
             title="Procedimientos"
           >
-            <Procedure patientId={searchText} />
+            <InfoComponent
+              patientId={searchText}
+              path={procedurePath}
+              errorText={"Hubo un error al cargar los procedimientos"}
+              noRecordsText={"No se encontraron procedimientos"}
+            />
           </AccordionItem>
           <AccordionItem
             itemId="allergies"
@@ -76,7 +78,12 @@ const App = () => {
             parentId="healthRecordAccordion"
             title="Observaciones"
           >
-            <Observation patientId={searchText} />
+            <InfoComponent
+              patientId={searchText}
+              path={observationPath}
+              errorText={"Hubo un error al cargar las observaciones"}
+              noRecordsText={"No se encontraron observaciones"}
+            />
           </AccordionItem>
           <AccordionItem
             itemId="medications"
