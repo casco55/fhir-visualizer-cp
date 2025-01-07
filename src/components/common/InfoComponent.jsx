@@ -14,20 +14,6 @@ export const InfoComponent = ({
     patientId,
     path: path,
   });
-  useEffect(() => {
-    if (entry?.length > 0) {
-      const reduceEntryByDisplay = entry.reduce((acc, item) => {
-        const display = item.resource?.code?.coding[0]?.display;
-        if (acc[display]) {
-          acc[display].push(item);
-        } else {
-          acc[display] = [item];
-        }
-        return acc;
-      });
-      console.log(reduceEntryByDisplay);
-    }
-  }, [entry]);
 
   return (
     <>
@@ -38,9 +24,19 @@ export const InfoComponent = ({
       )}
       {!error && entry?.length > 0 && !loading && (
         <div className="row row-cols-1 row-cols-md-3 justify-content-start px-5 py-4">
-          {entry.map((item, index) => (
-            <CardComponent item={item} key={index} />
-          ))}
+          {entry
+            .sort((a, b) => {
+              const dateA = new Date(
+                a.resource?.effectiveDateTime || a.resource?.onsetDateTime
+              );
+              const dateB = new Date(
+                b.resource?.effectiveDateTime || b.resource?.onsetDateTime
+              );
+              return dateB - dateA;
+            })
+            .map((item, index) => (
+              <CardComponent item={item} key={index} />
+            ))}
         </div>
       )}
     </>

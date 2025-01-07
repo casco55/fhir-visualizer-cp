@@ -1,7 +1,7 @@
-// src/components/MedicationStatement.jsx
 import { medicationPath } from "../constants/endpoints";
 import { useInfo } from "../hooks/useInfo";
 import { AlertComponent } from "./common/AlertComponent";
+import { CardComponent } from "./common/CardComponent";
 import { LoadingComponent } from "./common/LoadingComponent";
 
 export const MedicationStatement = ({ patientId }) => {
@@ -9,7 +9,6 @@ export const MedicationStatement = ({ patientId }) => {
     patientId,
     path: medicationPath,
   });
-  /* TODO: consultar contrato de medicamentos */
   return (
     <>
       {loading && <LoadingComponent />}
@@ -25,12 +24,7 @@ export const MedicationStatement = ({ patientId }) => {
       {!error && entry?.length > 0 && (
         <div className="row row-cols-1 row-cols-md-3 justify-content-start px-5 py-4">
           {entry.map((item, index) => (
-            <div className="col border p-3" key={index}>
-              <p className="my-0">
-                Condición: {item.resource?.code?.coding[0]?.display}
-              </p>
-              <p className="my-0">Fecha: {item.resource?.onsetDateTime}</p>
-            </div>
+            <CardComponent item={item} key={index} />
           ))}
         </div>
       )}

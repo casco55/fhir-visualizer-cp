@@ -11,7 +11,6 @@ import {
   conditionPath,
   medicationPath,
   observationPath,
-  procedurePath,
 } from "./constants/endpoints";
 const App = () => {
   const { text, handleChange, onSearch, searchText } = useSearch();
